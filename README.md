@@ -41,6 +41,8 @@ cd APS-6-SEMESTRE
 
 ### 3. Criação do Ambiente Conda
 `# Cria o ambiente a partir do arquivo
+
+
 conda env create -f environment.yml
 
 # Ativa o ambiente recém-criado
