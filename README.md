@@ -29,6 +29,7 @@ Para executar este projeto em sua máquina local, siga os passos abaixo.
 
 * Ter o [Anaconda](https://www.anaconda.com/download) ou [Miniconda](https://docs.conda.io/en/latest/miniconda.html) instalado.
 * Uma webcam conectada.
+* VS Code instalado
 
 ### 2. Clone o Repositório
 
