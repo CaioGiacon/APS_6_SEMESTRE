@@ -1,133 +1,85 @@
-# APS_6_SEMESTRE
-Projeto de Visão Computacional para a disciplina de Processamento de Imagem e Visão Computacional
+# 🔒 Cofre de Segurança com Reconhecimento Facial
 
+> **APS 6º Semestre** - Disciplina de Processamento de Imagem e Visão Computacional.
 
-🔒 Projeto: Cofre de Segurança com Reconhecimento Facial
+![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)
+![Conda](https://img.shields.io/badge/Manager-Anaconda-green?logo=anaconda&logoColor=white)
+![OpenCV](https://img.shields.io/badge/Lib-OpenCV-red?logo=opencv&logoColor=white)
+![PyQt5](https://img.shields.io/badge/GUI-PyQt5-green?logo=qt&logoColor=white)
 
+Este projeto acadêmico simula um cofre de alta segurança que utiliza **reconhecimento facial em tempo real** para gerenciar o acesso. O sistema identifica usuários e concede permissões baseadas em uma hierarquia de três níveis.
 
-Este é um projeto acadêmico para a disciplina de Visão Computacional, desenvolvido como um protótipo de um cofre de segurança de múltiplos níveis. O sistema utiliza reconhecimento facial em tempo real para conceder ou negar acesso.
+---
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## 📋 Funcionalidades
 
-📝 Descrição
-O sistema simula um cofre de alta segurança com três níveis hierárquicos de permissão:
+* **Reconhecimento Facial em Tempo Real:** Identificação instantânea processada frame a frame via webcam.
+* **Controle de Acesso Hierárquico:**
+    * 🔓 **Nível 1:** Acesso Geral (Operadores).
+    * 🔐 **Nível 2:** Acesso Restrito (Diretores).
+    * ⛔ **Nível 3:** Acesso Exclusivo (Autoridade Máxima).
+* **Interface Gráfica (GUI):** Desenvolvida em **PyQt5**, exibe o feed da câmera, nome do usuário e status de acesso.
+* **Feedback Visual:** Indicadores dinâmicos de "Acesso Liberado" ou "Acesso Negado".
+* **Banco de Dados Persistente:** Armazena as "assinaturas faciais" (encodings) para verificação rápida.
 
-Nível 1: Acesso geral (operadores).
+---
 
-Nível 2: Acesso restrito (diretores de divisão).
+## 🛠️ Tecnologias Utilizadas
 
-Nível 3: Acesso exclusivo (autoridade máxima, ex: Ministro).
+* **Linguagem:** Python 3.10
+* **Visão Computacional:** OpenCV, Dlib, Face_recognition
+* **Interface:** PyQt5
+* **Gerenciamento de Dados:** Numpy, Pickle
+* **Ambiente:** Anaconda (Essencial para este projeto)
 
-A aplicação utiliza a webcam para capturar o vídeo, identificar um rosto e compará-lo com um banco de dados de rostos autorizados. Uma interface gráfica (GUI) exibe o status da operação em tempo real (Aguardando, Acesso Liberado, Acesso Negado), o nome da pessoa reconhecida e seu nível de permissão.
+---
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## ⚠️ Instalação (Importante)
 
-✨ Principais Funcionalidades
-Reconhecimento em Tempo Real: Identificação facial processada frame a frame.
+> **Nota Crítica:** Este projeto possui dependências sensíveis (especialmente `dlib` e `PyQt`). Para evitar conflitos de DLL conhecidos, siga estritamente os passos abaixo utilizando o **Anaconda**.
 
-Banco de Dados de Rostos: Sistema de codificação que processa imagens de pessoas autorizadas e armazena suas "assinaturas" faciais.
+### 1. Criar o Ambiente
+Abra o **Anaconda Prompt** e execute o comando abaixo. Isso criará um ambiente limpo chamado `cofre` e instalará todas as dependências via `conda-forge` para garantir compatibilidade.
 
-Níveis de Acesso: Lógica para atribuir diferentes permissões com base no usuário.
-
-Interface Gráfica (GUI): Tela amigável construída com PyQt5 que exibe o feed da câmera e o status do sistema.
-
-Feedback Visual: Imagens de status (liberado.png, negado.png) atualizadas dinamicamente.
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-🔧 Tecnologias Utilizadas
-Python 3.10
-
-Anaconda: Gerenciador de pacotes e ambientes.
-
-OpenCV: Para captura e processamento de imagem da webcam.
-
-dlib: A biblioteca C++ que serve de motor para o reconhecimento facial.
-
-face_recognition: Uma biblioteca Python que simplifica o uso da dlib para encontrar, codificar e comparar rostos.
-
-PyQt5: A biblioteca utilizada para construir a interface gráfica do usuário.
-
-Numpy: Para manipulação eficiente de arrays de imagem.
-
-Pickle: Para serializar e salvar o banco de dados de codificações faciais.
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-🚀 Instalação (O Caminho Correto)
-Para evitar os conflitos de DLL que encontramos, a instalação deste projeto deve ser feita de uma maneira muito específica.
-
-💡 O Desafio: pip vs. conda-forge
-Durante o desenvolvimento, enfrentamos um erro crítico e persistente: ImportError: DLL load failed while importing QtWidgets.
-
-Causa: Este erro acontece devido a um conflito entre as bibliotecas C++ compiladas pelo pip e as compiladas pelo conda.
-
-O Conflito: Tentar instalar o PyQt6 (via pip) e o opencv (via conda-forge) no mesmo ambiente causa uma falha na inicialização das DLLs do PyQt.
-
-A Solução Definitiva: A única solução 100% estável foi usar exclusivamente o conda-forge para instalar todos os pacotes pesados (dlib, opencv, pyqt). Como o PyQt6 não está no conda-forge, migramos o projeto para o PyQt5, que está disponível e é mantido no conda-forge.
-
-Passos para a Instalação
-Siga estes passos no Terminal Anaconda (Anaconda Prompt).
-
-1. Crie um Ambiente Anaconda Limpo
-
-Este comando único cria um novo ambiente chamado "cofre" e já instala todas as dependências necessárias de forma compatível, direto do conda-forge.
-
+```bash
 conda create -n cofre -c conda-forge python=3.10 dlib opencv face_recognition pyqt=5
+conda activate cofre
+```
+## 📂 Estrutura do Projeto
+Certifique-se de que seus arquivos estejam organizados desta forma para que os scripts encontrem o banco de dados:
 
-2. Ative o Ambiente
-
-Sempre que for trabalhar no projeto, ative o ambiente com:
-
-conda activate cofre_final
-
-Nenhuma outra instalação via pip é necessária, pois a biblioteca face_recognition já foi instalada pelo conda (ela vem junto com dlib e opencv no conda-forge).
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-📁 Estrutura do Projeto
-O projeto deve seguir esta organização de pastas para que os caminhos (../codificacoes.pkl) funcionem corretamente.
-
-/APS-6-SEMESTRE/
+APS-6-SEMESTRE/
 │
 ├── database/
-│   ├── nivel-1/
-│   │   ├── (fotos .jpg/.png)
-│   ├── nivel-2/
-│   │   ├── (fotos .jpg/.png)
-│   ├── nivel-3/
-│   │   ├── (fotos .jpg/.png)
+│   ├── nivel-1/             # Fotos dos Operadores (.jpg/.png)
+│   ├── nivel-2/             # Fotos dos Diretores
+│   ├── nivel-3/             # Fotos das Autoridades
 │   │
-│   ├── autenticador_de_permissao.py  # 👈 Script principal da GUI
-│   └── codificador_de_faces.py     # 👈 Script para processar a database
+│   ├── autenticador_de_permissao.py   # 🏁 Script Principal (GUI)
+│   └── codificador_de_faces.py        # ⚙️ Script para gerar banco de dados
 │
-├── test/
-│   └── primeiro_autenticador.py      # Pasta de testes (ignorar na produção)
-│
-└── codificacoes.pkl
+└── codificacoes.pkl         # Arquivo gerado com as assinaturas faciais
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## ▶️ Como Usar
 
-▶️ Modo de Uso
-Passo 1: Alimentar o Banco de Dados
+Passo 1: Cadastrar Usuários
+Coloque fotos nítidas (frontal, boa iluminação) das pessoas nas pastas correspondentes dentro de database/ (nivel-1, nivel-2, etc.). O nome do arquivo será usado como o nome do usuário na tela.
 
-Adicione fotos nítidas (preferencialmente .jpg ou .png) das pessoas autorizadas dentro das pastas correspondentes (database/nivel_1, database/nivel_2, database/nivel_3). O nome do arquivo será usado como o nome da pessoa.
+Passo 2: Gerar Codificações
+Antes de rodar o programa pela primeira vez (ou após adicionar novas fotos), processe as imagens para criar o arquivo de reconhecimento:
 
-Passo 2: Gerar as Codificações
+```bash
+python database/codificador_de_faces.py
+```
+Isso criará/atualizará o arquivo codificacoes.pkl na raiz.
 
-Antes de executar o cofre pela primeira vez (ou sempre que adicionar novas fotos), você deve rodar o script de codificação.
-
-Ative o ambiente: conda activate cofre
-
-Navegue até a pasta raiz (APS-6-SEMESTRE/)
-
-Execute: python codificador_de_faces.py
-
-Isso irá criar (ou atualizar) o arquivo codificacoes.pkl, que contém as "assinaturas" faciais.
-
-Passo 3: Executar o Sistema
-
-Com o banco de dados gerado e os arquivos .png de status na pasta raiz, execute a aplicação principal:
-
+Passo 3: Executar o Cofre
+Com o ambiente ativado e as codificações geradas, inicie o sistema:
+```bash
 python database/autenticador_de_permissao.py
-O sistema será iniciado, a câmera será ativada e o reconhecimento começará.
+```
+A interface abrirá e a câmera começará a buscar por rostos autorizados.
+
+## 👤 Autor
+Desenvolvido por Caio Giacon.
+Projeto desenvolvido para fins educacionais na disciplina de Visão Computacional.
