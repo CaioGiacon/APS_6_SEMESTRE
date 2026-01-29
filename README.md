@@ -48,7 +48,7 @@ conda activate cofre
 ## 📂 Estrutura do Projeto
 Certifique-se de que seus arquivos estejam organizados desta forma para que os scripts encontrem o banco de dados:
 
-APS-6-SEMESTRE/
+```APS-6-SEMESTRE/
 │
 ├── database/
 │   ├── nivel-1/             # Fotos dos Operadores (.jpg/.png)
@@ -59,6 +59,7 @@ APS-6-SEMESTRE/
 │   └── codificador_de_faces.py        # ⚙️ Script para gerar banco de dados
 │
 └── codificacoes.pkl         # Arquivo gerado com as assinaturas faciais
+```
 
 ## ▶️ Como Usar
 
